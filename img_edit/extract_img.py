@@ -122,7 +122,6 @@ def cleanup(SOURCE="boot"):
 	ramdisk = '%s_ramdisk.cpio'% SOURCE
 	KERNEL_FILENAME = '%s_kernel.zImage.bin' % SOURCE
 	ramdiskcompressed = '%s_ramdisk.cpio.gz'% SOURCE
-	ramdiskdir = '%s_ramdisk' % SOURCE
 	output = '%s-new.img'% SOURCE
 	try:
 		os.remove(ramdisk)
@@ -140,9 +139,6 @@ def cleanup(SOURCE="boot"):
 		os.remove(output)
 	except OSError:
 		pass
-	cmd = "rm -Rf " + ramdiskdir
-	print cmd
-	os.system(cmd)
 
 def usage():
 	print 'Usage: extract_img.py <filename.img>'
@@ -158,6 +154,6 @@ if __name__ == '__main__':
 		print 'You must provide an .img file path.'
 		usage()
 
-	cleanup(sys.argv[1][:-4])
 	extract_img(sys.argv[1][:-4])
 	extract_cpio(sys.argv[1][:-4])
+	cleanup(sys.argv[1][:-4])
