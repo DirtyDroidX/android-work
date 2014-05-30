@@ -106,7 +106,7 @@ def extract_cpio(SOURCE="boot"):
 	print cwd
 	os.mkdir(ramdiskdir)
 	os.chdir(ramdiskdir)
-	cmd = "cat ../../" + ramdisk + " | cpio -i"
+	cmd = "cat ../" + ramdisk + " | cpio -i"
 	print cmd
 	os.system(cmd)
 	os.chdir(cwd)
